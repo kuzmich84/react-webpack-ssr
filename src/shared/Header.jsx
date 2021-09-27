@@ -1,11 +1,12 @@
 import {hot} from "react-hot-loader/root"
 import React from "react";
+import styles from "./header.scss";
 
 
 function HeaderComponent() {
     return (
         <header>
-            <h1>Hello React SSR!!!</h1>
+            <h1 className={styles.example}>Hello React SSR!!!</h1>
         </header>
     )
 }

@@ -11,14 +11,31 @@ module.exports = {
         filename: "server.js"
     },
     resolve: {
-        extensions: ['.jsx','.js','.json']
+        extensions: ['.jsx', '.js', '.json']
     },
     externals: [nodeExternals()],
     module: {
         rules: [{
             test: /\.[jt]sx?$/,
             use: ['ts-loader']
-        }]
+        },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]__[local]-[hash:base64:5]'
+                            },
+                            onlyLocals: true
+                        }
+                    },
+                'sass-loader'
+                ]
+            }
+        ]
     },
     optimization: {
         minimize: false
