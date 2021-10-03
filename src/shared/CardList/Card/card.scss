@@ -1,0 +1,12 @@
+@import '../../../main.global';
+
+.card {
+  background-color: $white;
+  border-right: 7px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card > * {
+  flex: 1 1 100%;
+}
