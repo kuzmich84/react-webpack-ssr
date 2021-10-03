@@ -11,9 +11,11 @@ function setupDevTool() {
     if (IS_PROD) return false;
 }
 
+const GLOBAL_CSS_REGEXP = /\.global\.scss$/;
+
 module.exports = {
     resolve: {
-        extensions: ['.js', '.jsx', '.json'],
+        extensions: ['.js', '.jsx', '.json','.ts', '.tsx'],
         alias: {
             'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
         }
@@ -47,8 +49,15 @@ module.exports = {
                         }
                     },
                     'sass-loader'
-                ]
-            }]
+                ],
+                exclude: GLOBAL_CSS_REGEXP
+            },
+            {
+                test: GLOBAL_CSS_REGEXP,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }
+
+        ]
     },
     devtool: setupDevTool(),
     plugins: IS_DEV
