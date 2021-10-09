@@ -6,7 +6,7 @@
   "scripts": {
     "build:dev": "env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "env NODE_ENV=development node ./bin/dev.js",
+    "dev": "cross-env NODE_ENV=development node ./bin/dev.js",
     "windev": "cross-env NODE_ENV=development node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,10 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^3.4.2",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.13",
@@ -27,6 +30,8 @@
     "sass": "^1.22.10",
     "sass-loader": "^7.2.0",
     "style-loader": "^1.1.3",
+    "svg-sprite-loader": "^6.0.9",
+    "svgo-loader": "^3.0.0",
     "ts-jest": "^25.2.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.8.3",
