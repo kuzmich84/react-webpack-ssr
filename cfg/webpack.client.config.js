@@ -18,10 +18,9 @@ const GLOBAL_CSS_REGEXP = /\.global\.scss$/;
 
 module.exports = {
     resolve: {
-        extensions: ['.js', '.jsx', '.json','.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
         alias: {
-            'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
-            images: path.resolve(__dirname, '../src/img/'),
+            'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom'
         }
     },
     mode: NODE_ENV ? NODE_ENV : 'development',
@@ -52,7 +51,18 @@ module.exports = {
                             }
                         }
                     },
-                    'sass-loader'
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [
+                                path.resolve(__dirname, '../src/common-styles/normalize.scss'),
+                                path.resolve(__dirname, '../src/common-styles/mixins.scss'),
+                                path.resolve(__dirname, '../src/common-styles/variables.scss'),
+                                path.resolve(__dirname, '../src/common-styles/common.scss')
+                            ]
+                        }
+                    }
                 ],
                 exclude: GLOBAL_CSS_REGEXP
             },
@@ -61,20 +71,23 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.svg$/,
+                use: [
+                    'svg-sprite-loader',
+                    'svgo-loader'
+                ],
+                include: path.resolve(__dirname, '../src/img/sprite')
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
                 use: [
                     {
                         loader: 'file-loader',
                     },
                 ],
+                exclude: path.resolve(__dirname, '../src/img/sprite')
             },
-            {
-                test: /\.svg$/,
-                use: [
-                    'svg-sprite-loader',
-                    'svgo-loader'
-                ]
-            },
+
         ]
     },
     devtool: setupDevTool(),
@@ -82,14 +95,15 @@ module.exports = {
         ? [
             new CleanWebpackPlugin(),
             new HotModuleReplacementPlugin(),
+            new SpriteLoaderPlugin(),
             new CopyPlugin([
                     {
                         from: path.resolve(__dirname, '../src/img'),
-                        to: path.resolve(__dirname, '../dist/client/img')
+                        to: path.resolve(__dirname, '../dist/client')
                     },
                 ],
             ),
-            new SpriteLoaderPlugin(),
+
         ]
         :
         []

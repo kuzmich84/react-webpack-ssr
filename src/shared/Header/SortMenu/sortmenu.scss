@@ -1,0 +1,96 @@
+.list {
+  @include reset-ul();
+  padding: 0 20px;
+  background-color: $white;
+  position: relative;
+  margin-bottom: 11px;
+}
+
+.menu {
+  position: relative;
+}
+
+.toggle {
+  position: absolute;
+  background-image: url("../../../img/icon-arrow-up.svg");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  cursor: pointer;
+  width: 10px;
+  height: 6px;
+  display: block;
+  right: 20px;
+  top: 16px;
+  border: 0;
+  z-index: 1;
+}
+
+.list li {
+  height: 36px;
+  border-bottom: 1px solid $greyEC;
+  display: flex;
+  align-items: center;
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.link {
+  @include set-Roboto-normal();
+  font-size: 12px;
+  line-height: 14px;
+  color: $grey99;
+}
+
+
+.list svg {
+  margin-right: 8px;
+}
+
+.btn_close {
+  border: 0;
+  @include set-Roboto-normal();
+  font-size: 12px;
+  line-height: 14px;
+  color: #666666;
+  background-color: transparent;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: $tablet-width) {
+  .list {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid $greyD9;
+    margin-left: 50px;
+    margin-right: 50px;
+
+  }
+  .list svg {
+    display: none;
+  }
+
+  list li {
+    border-bottom: none;
+  }
+
+  .list li .active {
+    color: $braun;
+    border-bottom: 2px solid $braun;
+  }
+
+  .link {
+    font-size: 20px;
+    line-height: 23px;
+    color: $primary;
+    padding-bottom: 14px;
+  }
+  .toggle {
+    display: none
+  }
+}

@@ -33,7 +33,18 @@ module.exports = {
                             onlyLocals: true
                         }
                     },
-                    'sass-loader'
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [
+                                path.resolve(__dirname, '../src/common-styles/normalize.scss'),
+                                path.resolve(__dirname, '../src/common-styles/mixins.scss'),
+                                path.resolve(__dirname, '../src/common-styles/variables.scss'),
+                                path.resolve(__dirname, '../src/common-styles/common.scss')
+                            ]
+                        }
+                    }
                 ],
                 exclude: GLOBAL_CSS_REGEXP
             },

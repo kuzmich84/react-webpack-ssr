@@ -1,23 +1,72 @@
-@import '../../../main.global';
-
-.searchBlock {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 20px;
-  background-color: $white;
-  border-radius: 0 0 7px 7px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin: 0 0 38px;
+.search {
+  position: relative;
+  display: block;
+  min-width: 192px;
+  width: 100%;
 }
 
-@media all and (min-width: 1024px) {
-  .searchBlock {
-    padding: 0;
-    margin: 0 0 0 auto;
-    background-color: transparent;
+.search input {
+  width: 100%;
+  height: 30px;
+  background: $greyF4;
+  border-radius: 30px;
+  border: none;
+  @include set-Roboto-normal();
+  font-size: 12px;
+  line-height: 14px;
+  padding: 0 31px;
 
+  &::placeholder {
+    @include set-Roboto-normal();
+    font-size: 12px;
+    line-height: 14px;
+    color: $greyC4;
+  }
+}
+
+.search::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  background-color: $greyF4;
+  background-image: url("../../../img/icon-search.svg");
+  position: absolute;
+  display: block;
+  left: 16px;
+  top: 9px;
+}
+
+@media (min-width: $tablet-width) {
+  .search {
+    width: 280px;
+    margin-left: 30px;
   }
 
+  .search input {
+    width: 100%;
+    height: 30px;
+    background: #FFFFFF;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    @include set-Roboto-normal();
+    font-size: 20px;
+    line-height: 23px;
+    padding: 0 31px;
+  }
+
+  .search input::placeholder {
+    @include set-Roboto-normal();
+    font-size: 16px;
+    line-height: 19px;
+    color: $greyC4;
+  }
+
+  .search::before {
+    width: 18.54px;
+    height: 19px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    left: 16px;
+    top: 9px;
+  }
 }
