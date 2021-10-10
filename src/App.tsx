@@ -13,7 +13,6 @@ function AppComponent() {
             <Content>
                <CardList/>
             </Content>
-
         </Layout>
     )
 }

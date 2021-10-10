@@ -1,3 +1,7 @@
+.list {
+  @include reset-ul();
+}
+
 @media all and (min-width: 1024px){
   .cardList {
     padding: 40px 0;

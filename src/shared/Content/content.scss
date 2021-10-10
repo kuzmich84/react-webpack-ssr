@@ -1,4 +1,4 @@
-@media all and (min-width: 1024px) {
+@media all and (min-width: $tablet-width) {
   .content {
     background-color: #ffffff;
     border-radius: 7px 7px 0 0;

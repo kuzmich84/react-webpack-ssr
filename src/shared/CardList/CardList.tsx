@@ -4,8 +4,10 @@ import { Card } from './Card';
 
 export function CardList() {
     return (
-        <ul className={styles.cardList}>
-            <Card/>
-        </ul>
+        <section className={styles.cards}>
+            <ul className={styles.list}>
+                <Card/>
+            </ul>
+        </section>
     );
 }

@@ -1,0 +1,29 @@
+.wrapper_like {
+  display: flex;
+}
+
+.likes_count {
+  @include set-Roboto-medium();
+  font-size: 12px;
+  line-height: 14px;
+  color: $greyC4;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+@media (min-width: $tablet-width) {
+  .wrapper_like {
+    position: absolute;
+    right: 40px;
+    top: 83px;
+    flex-direction: column;
+  }
+
+  .likes_count {
+    font-size: 14px;
+    line-height: 16px;
+    padding: 2px 0;
+    margin: 0;
+    color: $primary;
+  }
+}

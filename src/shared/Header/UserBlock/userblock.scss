@@ -1,0 +1,36 @@
+.avator img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-right: 28px;
+}
+
+.avator p {
+  display: none;
+}
+
+@media(min-width: $tablet-width){
+  .avator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    order: 3;
+  }
+
+  .avator p {
+    display: block;
+    @include set-Roboto-medium();
+    font-size: 20px;
+    line-height: 23px;
+    color: $braun;
+  }
+
+  .avator img {
+    width: 50px;
+    height: 50px;
+    margin-right: 13px;
+    margin-left: 30px;
+  }
+
+}
