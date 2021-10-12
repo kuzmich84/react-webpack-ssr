@@ -22,7 +22,9 @@ export function HeaderCard() {
                     </svg>
                 </button>
             </header>
-            <h2 className={styles.title}>Реплицированные с зарубежных источников возможности </h2>
+            <h2 className={styles.title}>
+                <a href="#" className={styles.postLink}>Реплицированные с зарубежных источников возможности Реплицированные с зарубежных источников возможностиРеплицированные с зарубежных источников возможности</a>
+            </h2>
             <Comments/>
         </div>
     );
