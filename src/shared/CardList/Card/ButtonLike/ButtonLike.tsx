@@ -11,7 +11,7 @@ export function ButtonLike() {
                 </svg>
             </button>
             <p className={styles.likes_count }>101</p>
-            <button type="button" className={["btn", styles.button_like].join(' ')}>
+            <button type="button" className={["btn", styles.button_dislike].join(' ')}>
                 <span className="visually-hidden">Dislike</span>
                 <svg width="19" height="10">
                     <use xlinkHref="#icon-dislike "/>

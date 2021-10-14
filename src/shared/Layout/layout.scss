@@ -1,5 +1,20 @@
 .layout {
   max-width: 1400px;
   margin: 0 auto;
-  padding-top: 40px;
+}
+
+@media (min-width: $tablet-width) {
+  .layout {
+    padding-top: 40px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .layout {
+    margin-top: 97px;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    background-color: $greyF4;
+    max-width: $desktop-width;
+  }
 }

@@ -2,8 +2,18 @@
   @include reset-ul();
 }
 
-@media all and (min-width: 1024px){
-  .cardList {
+@media (min-width: $tablet-width) {
+  .list {
     padding: 40px 0;
+    background-color: $white;
+    border-radius: 7px;
+  }
+}
+
+
+@media (min-width: $desktop-width) {
+  .list{
+    margin: 0 auto;
+    max-width: 1400px;
   }
 }

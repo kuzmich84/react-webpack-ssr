@@ -25,6 +25,10 @@
   margin-right: 1px;
 }
 
+.message_status svg {
+  fill: $greyD9;
+}
+
 @media (min-width: $tablet-width) {
   .message_status {
     margin: 0;
@@ -42,6 +46,8 @@
   .message_count {
     width: 20px;
     height: 20px;
+
+
   }
   .message_count span {
     font-size: 14px;
@@ -49,5 +55,12 @@
   }
   .message_status {
     order: 1;
+  }
+}
+
+@media (min-width: $desktop-width){
+  .message_status svg:hover {
+    fill: $braun;
+    cursor:pointer;
   }
 }

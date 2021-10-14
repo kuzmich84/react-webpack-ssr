@@ -4,3 +4,10 @@
     border-radius: 7px 7px 0 0;
   }
 }
+
+@media all and (min-width:$desktop-width) {
+  .content {
+    background-color: $greyF4;
+    border-radius: 7px 7px 0 0;
+  }
+}

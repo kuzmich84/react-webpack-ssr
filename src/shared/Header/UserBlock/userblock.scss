@@ -10,7 +10,7 @@
   display: none;
 }
 
-@media(min-width: $tablet-width){
+@media(min-width: $tablet-width) {
   .avator {
     display: flex;
     justify-content: space-between;
@@ -33,4 +33,29 @@
     margin-left: 30px;
   }
 
+}
+
+@media (min-width: $desktop-width) {
+  .avator p {
+    color: $primary;
+  }
+
+  .avator img {
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    filter: none;
+    border: 1px solid transparent;
+  }
+
+  .avator:hover {
+    cursor: pointer;
+  }
+
+  .avator:hover p {
+    color: $braun;
+  }
+  .avator:hover img {
+    border: 1px solid $braun;
+  }
 }

@@ -35,7 +35,7 @@
   .comments_wrapper {
     position: absolute;
     left: 267px;
-    bottom: 50px;
+    bottom: -5px;
   }
 
   .comments_count span:last-child {
@@ -50,5 +50,21 @@
   .btn_comments svg {
     width: 14.17px;
     height: 14.17px;
+  }
+}
+
+@media(min-width: $desktop-width) {
+  .comments_wrapper {
+    cursor: pointer;
+    left: 228px;
+    bottom: -5px;
+  }
+  .comments_wrapper:hover svg {
+    fill: $braun;
+    color: $braun;
+  }
+
+  .comments_wrapper:hover .comments_count span {
+    color: $braun;
   }
 }

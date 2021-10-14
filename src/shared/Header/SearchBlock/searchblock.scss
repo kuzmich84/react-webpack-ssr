@@ -72,5 +72,12 @@
     left: 24px;
     top: 14px;
   }
+}
 
+@media (min-width: $desktop-width) {
+  .search {
+    width: 350px;
+    margin-left: 50px;
+
+  }
 }

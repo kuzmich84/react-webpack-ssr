@@ -11,6 +11,17 @@
   margin-left: 4px;
 }
 
+.button_like,
+.button_dislike {
+  position: relative;
+  z-index: 26;
+}
+
+.button_like svg,
+.button_dislike svg{
+  fill: $greyC4;
+}
+
 @media (min-width: $tablet-width) {
   .wrapper_like {
     position: absolute;
@@ -26,4 +37,21 @@
     margin: 0;
     color: $primary;
   }
+
+  .button_like svg,
+  .button_dislike svg{
+    fill: $greyD9;
+  }
+
+}
+
+@media (min-width: $desktop-width) {
+  .button_like:hover svg {
+    fill: $green;
+  }
+
+  .button_dislike:hover svg{
+    fill: #CC3361;
+  }
+
 }

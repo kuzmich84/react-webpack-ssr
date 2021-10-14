@@ -7,6 +7,7 @@ export function CardList() {
         <section className={styles.cards}>
             <ul className={styles.list}>
                 <Card/>
+                <Card/>
             </ul>
         </section>
     );

@@ -2,6 +2,17 @@
   background-color: $white;
   border-radius: 7px;
   margin-bottom: 20px;
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
 }
 
 .content {
@@ -32,9 +43,31 @@
     width: 190px;
     height: 107px;
     border-radius: 3px;
+    min-height: auto;
   }
 
   .card {
     padding-bottom: 40px;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color:transparent;
   }
+}
+
+@media (min-width: $desktop-width) {
+  .content {
+    margin-left: 70px;
+    margin-right: 45px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .card {
+    border: 1px solid transparent;
+  }
+  .card:hover {
+    border: 1px solid #D9D9D9;
+    cursor: pointer;
+  }
+
+
 }

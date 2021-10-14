@@ -97,3 +97,28 @@
     display: none;
   }
 }
+
+@media (min-width: $desktop-width) {
+  .list {
+    justify-content: flex-start;
+  }
+
+  .list li {
+    margin-right: 60px;
+  }
+
+  .list li:last-child {
+    margin-right: 0;
+  }
+
+  .menu {
+    margin-left: 80px;
+  }
+
+  .link:hover {
+    color: $braun;
+
+  }
+
+
+}
