@@ -8,6 +8,7 @@ import {CardList} from "./shared/CardList";
 import {Dropdown} from "./shared/Dropdown";
 import {Card} from "./shared/CardList/Card";
 import {GenericList} from "./shared/GenericList";
+import {Text} from "./shared/Text";
 
 function AppComponent() {
     return (
@@ -15,15 +16,11 @@ function AppComponent() {
             <Header/>
             <Content>
                <CardList/>
-                <Dropdown
-                    button={<button className="btn">Test</button>} isOpen={false}
-                    onOpen={()=>console.log('opened')}
-                    onClose={()=>console.log('closed')}
-                >
-                    <ul>
-                        <li>12</li>
-                    </ul>
-                </Dropdown>
+                <br/>
+                <Text size={28} mobileSize={28}>Label1</Text>
+                <Text size={20} As={'h2'}>Label2</Text>
+                <Text size={16} mobileSize={28}>Label3</Text>
+
             </Content>
         </Layout>
     )

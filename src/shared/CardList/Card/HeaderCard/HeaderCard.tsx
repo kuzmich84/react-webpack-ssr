@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './headercard.scss';
-import {Comments} from "../../../Comments";
+import MenuIcon from "../../../Icons/MenuIcon";
+import {Menu} from "../Menu";
 
 export function HeaderCard() {
     return (
@@ -15,16 +16,12 @@ export function HeaderCard() {
                         <span>опубликовано&nbsp;</span>8 часов назад
                     </time>
                 </div>
-                <button className={['btn', styles.ellipsis].join(' ')} type="button">
-                    <span className="visually-hidden">Вызов меню карточки</span>
-                    <svg width="20" height="5">
-                        <use xlinkHref="#icon-menu-card"/>
-                    </svg>
-                </button>
+                <Menu/>
             </header>
             <object>
                 <h2 className={styles.title}>
-                    <a href="#title_card" className={styles.postLink}>Реплицированные с зарубежных источников возможности.</a>
+                    <a href="#title_card" className={styles.postLink}>Реплицированные с зарубежных источников
+                        возможности.</a>
                 </h2>
             </object>
         </div>

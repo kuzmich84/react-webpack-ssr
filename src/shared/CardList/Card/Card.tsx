@@ -8,7 +8,6 @@ import {Comments} from "../../Comments";
 export function Card() {
     return (
         <li className={styles.card}>
-            <a className={styles.link}  href="#card">
                 <div className={styles.content}>
                     <HeaderCard/>
                     <img className={styles.image}
@@ -16,7 +15,6 @@ export function Card() {
                          alt="Картинка 1"/>
                     <FooterCard/>
                 </div>
-            </a>
         </li>
     );
 }
