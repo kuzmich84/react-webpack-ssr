@@ -1,8 +1,8 @@
 import express from "express";
 import ReactDOM from "react-dom/server";
-import {Header} from "../shared/Header";
 import {indexTemplate} from "./indexTemplate";
 import {App} from "../App";
+import axios from "axios";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +12,23 @@ app.use('/static', express.static('./dist/client'));
 app.get('/', (req, res) => {
     res.send(indexTemplate(ReactDOM.renderToString(App())))
 })
+
+app.get('/auth', (req, res) => {
+    axios.post(
+        'https://www.reddit.com/api/v1/access_token',
+        `grant_type=authorization_code&code=${req.query.code}&redirect_uri=http://localhost:3000/auth`,
+
+    {
+            auth: {username: process.env.CLIENT_ID, password: 'uYUV2hJN1LnqmHvdtXA6rd58Sv23iw'},
+            headers: {'Content-type': 'application/x-www-form-urlencoded'}
+        }
+    )
+        .then(({data}) => {
+            res.send(indexTemplate(ReactDOM.renderToString(App()), data['access_token']))
+        })
+        .catch(console.log)
+})
+
 
 app.listen(PORT, () => {
     console.log(`Server started on ${PORT} port`)

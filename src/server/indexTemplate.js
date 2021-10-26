@@ -1,4 +1,4 @@
-export const indexTemplate = (content) => `
+export const indexTemplate = (content, token) => `
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -10,22 +10,10 @@ export const indexTemplate = (content) => `
     <link rel="preload" href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap' as="font"
           crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
-    <!--  <link href="pixelPerfect/pixel-glass/styles.css" rel="stylesheet">-->
-    <!--  <link href="pixelPerfect/index.css" rel="stylesheet">-->
-    <!--  <script src="pixelPerfect/pixel-glass/script.js"></script>-->
-    <!--   // Picturefill -->
-    <!--  <script>-->
-    <!--    // Picture element HTML5 shiv-->
-    <!--    document.createElement("picture");-->
-    <!--  </script>-->
-    <!--  <script src="js/picturefill.min.js" async=""></script>-->
-    <!--  &lt;!&ndash; // Picturefill &ndash;&gt;-->
-    <!--  &lt;!&ndash; // Polyfill &ndash;&gt;-->
-    <!--&lt;!&ndash;  <script src="js/svg4everybody.min.js"></script>&ndash;&gt;-->
-    <!--&lt;!&ndash;  <script>svg4everybody(); // run it now or whenever you are ready</script>&ndash;&gt;-->
-    <!--&lt;!&ndash;  &lt;!&ndash; // Polyfill &ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;  <link rel="stylesheet" href="css/style.min.css">&ndash;&gt;-->
     <script src="/static/client.js" type="application/javascript" ></script>
+    <script>
+    window.__token__ = '${token}'
+</script>
 </head>
 <body>
 <div id="root">${content}</div>

@@ -1,5 +1,5 @@
 const path = require('path');
-const {HotModuleReplacementPlugin} = require('webpack');
+const {HotModuleReplacementPlugin, DefinePlugin} = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const CopyPlugin = require('copy-webpack-plugin')
@@ -7,6 +7,22 @@ const NODE_ENV = process.env.NODE_ENV;
 
 const IS_DEV = NODE_ENV === 'development';
 const IS_PROD = NODE_ENV === 'production';
+
+const DEV_PLUGINS = [
+    new CleanWebpackPlugin(),
+    new HotModuleReplacementPlugin(),
+    new SpriteLoaderPlugin(),
+    new CopyPlugin([
+            {
+                from: path.resolve(__dirname, '../src/img'),
+                to: path.resolve(__dirname, '../dist/client')
+            },
+        ],
+    ),
+
+]
+
+const COMMON_PLUGINS = [new DefinePlugin({'process.env.CLIENT_ID': `"${process.env.CLIENT_ID}"`})];
 
 
 function setupDevTool() {
@@ -92,20 +108,6 @@ module.exports = {
     },
     devtool: setupDevTool(),
     plugins: IS_DEV
-        ? [
-            new CleanWebpackPlugin(),
-            new HotModuleReplacementPlugin(),
-            new SpriteLoaderPlugin(),
-            new CopyPlugin([
-                    {
-                        from: path.resolve(__dirname, '../src/img'),
-                        to: path.resolve(__dirname, '../dist/client')
-                    },
-                ],
-            ),
-
-        ]
-        :
-        []
-
+        ? DEV_PLUGINS
+        : COMMON_PLUGINS
 };

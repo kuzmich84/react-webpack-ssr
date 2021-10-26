@@ -6,7 +6,7 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cros s-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development node ./bin/dev.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=mxZY3Fxi-XzDmqGhh4ST_w node ./bin/dev.js",
     "windev": "cross-env NODE_ENV=development node ./bin/dev.js",
     "test": "jest"
   },
@@ -51,6 +51,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "axios": "^0.23.0",
     "classnames": "^2.3.1",
     "express": "^4.17.1",
     "react": "^16.13.0",

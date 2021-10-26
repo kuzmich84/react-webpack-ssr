@@ -5,25 +5,27 @@ import {Layout} from "./shared/Layout";
 import {Header} from "./shared/Header";
 import {Content} from "./shared/Content";
 import {CardList} from "./shared/CardList";
-import {Dropdown} from "./shared/Dropdown";
-import {Card} from "./shared/CardList/Card";
-import {GenericList} from "./shared/GenericList";
-import {Text} from "./shared/Text";
+import useToken from "./hooks/useToken";
+import {tokenContext} from "./shared/context/tokenContext";
+import {userContext, UserContextProvider} from "./shared/context/userContext";
+
 
 function AppComponent() {
-    return (
-        <Layout>
-            <Header/>
-            <Content>
-               <CardList/>
-                <br/>
-                <Text size={28} mobileSize={28}>Label1</Text>
-                <Text size={20} As={'h2'}>Label2</Text>
-                <Text size={16} mobileSize={28}>Label3</Text>
+    const [token] = useToken();
 
-            </Content>
-        </Layout>
+
+    return (
+        <tokenContext.Provider value={token}>
+            <UserContextProvider>
+                <Layout>
+                    <Header/>
+                    <Content>
+                        <CardList/>
+                    </Content>
+                </Layout>
+            </UserContextProvider>
+        </tokenContext.Provider>
     )
 }
 
-export const App = hot(AppComponent)
+export const App = hot(() => <AppComponent/>)

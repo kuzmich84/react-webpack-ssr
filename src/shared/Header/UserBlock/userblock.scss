@@ -1,4 +1,4 @@
-.avator img {
+.avatar img {
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -6,19 +6,27 @@
   margin-right: 28px;
 }
 
-.avator p {
+.avatar p {
   display: none;
 }
 
+.avatar svg {
+  border-radius: 50%;
+}
+
 @media(min-width: $tablet-width) {
-  .avator {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  .link {
     order: 3;
   }
 
-  .avator p {
+  .avatar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .avatar p {
     display: block;
     @include set-Roboto-medium();
     font-size: 20px;
@@ -26,7 +34,7 @@
     color: $braun;
   }
 
-  .avator img {
+  .avatar img {
     width: 50px;
     height: 50px;
     margin-right: 13px;
@@ -36,11 +44,13 @@
 }
 
 @media (min-width: $desktop-width) {
-  .avator p {
+  .avatar p {
     color: $primary;
+    margin-left: 13px;
   }
 
-  .avator img {
+  .avatar img,
+  .avatar svg {
     width: 60px;
     height: 60px;
     padding: 5px;
@@ -48,14 +58,22 @@
     border: 1px solid transparent;
   }
 
-  .avator:hover {
+  .avatar svg {
+   margin-left: 50px;
+  }
+
+  .avatar:hover {
     cursor: pointer;
   }
 
-  .avator:hover p {
+
+  .avatar:hover p {
     color: $braun;
   }
-  .avator:hover img {
+  .avatar:hover img {
+    border: 1px solid $braun;
+  }
+  .avatar:hover svg {
     border: 1px solid $braun;
   }
 }
