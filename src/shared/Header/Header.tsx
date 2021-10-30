@@ -4,7 +4,6 @@ import {SortMenu} from "./SortMenu";
 import {SearchBlock} from "./SearchBlock";
 import {MessageStatus} from "./MessageStatus";
 import {UserBlock} from "./UserBlock";
-import useUserData from "../../hooks/useUserData";
 import {userContext} from "../context/userContext";
 
 export function Header() {
