@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './buttoncomments.scss';
 
-export function ButtonComments() {
+interface IButtonComments {
+    countComments: number;
+}
+
+export function ButtonComments({countComments}:IButtonComments) {
     return (
         <div className={styles.comments_wrapper}>
             <button type="button" className={["btn", styles.btn_comments].join(' ')}>
@@ -10,7 +14,7 @@ export function ButtonComments() {
                     <use xlinkHref="#icon-comments"/>
                 </svg>
             </button>
-            <p className={styles.comments_count}><span>14</span><span>Комментарий</span></p>
+            <p className={styles.comments_count}><span>{countComments}</span><span>Комментарий</span></p>
         </div>
     );
 }

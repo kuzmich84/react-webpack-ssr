@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './userblock.scss';
 import NoAuthIcon from "../../Icons/NoAuthIcon";
-import NotStandardLink from "../../../utils/react/notStandardLink";
 
 interface IUserBlock {
     avatarSrc?: string,
@@ -24,7 +23,7 @@ export function UserBlock({avatarSrc, username}: IUserBlock) {
                     ? <img
                         src={avatarSrc}
                         alt="Аваторка"/>
-                    : <NoAuthIcon/>
+                    : <NoAuthIcon />
 
                 }
                 <p>{username || 'Аноним'}</p>

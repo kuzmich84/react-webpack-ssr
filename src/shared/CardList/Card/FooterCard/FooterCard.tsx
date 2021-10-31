@@ -4,11 +4,18 @@ import {ControlBlock} from "../ControlBlock";
 import {ButtonLike} from "../ButtonLike";
 import {ButtonComments} from "../ButtonComments";
 
-export function FooterCard() {
+interface IFooterInterface {
+    countComments: number;
+    score: number;
+}
+
+export function FooterCard({countComments, score}:IFooterInterface) {
     return (
         <footer className={styles.footer}>
-            <ButtonLike/>
-            <ButtonComments/>
+            <div className={styles.wrapper_like}>
+                <ButtonLike score={score}/>
+            </div>
+            <ButtonComments countComments={countComments}/>
             <ControlBlock/>
         </footer>
 
