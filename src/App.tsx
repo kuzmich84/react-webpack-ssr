@@ -10,7 +10,14 @@ import {tokenContext} from "./shared/context/tokenContext";
 import {UserContextProvider} from "./shared/context/userContext";
 import {PostsContextProvider} from "./shared/context/postsContext";
 import {commentContext} from "./shared/context/commentContext";
+import {ActionCreator, AnyAction, createStore, Reducer} from "redux";
+import {Provider} from "react-redux";
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {rootReducer} from "./store";
 
+
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 function AppComponent() {
     const [token] = useToken();
@@ -19,23 +26,25 @@ function AppComponent() {
     const CommentProvider = commentContext.Provider;
 
     return (
-        <CommentProvider value={{
-            value: commentValue,
-            onChange: setCommentValue,
-        }}>
-            <tokenContext.Provider value={token}>
-                <UserContextProvider>
-                    <Layout>
-                        <Header/>
-                        <Content>
-                            <PostsContextProvider>
-                                <CardList/>
-                            </PostsContextProvider>
-                        </Content>
-                    </Layout>
-                </UserContextProvider>
-            </tokenContext.Provider>
-        </CommentProvider>
+        <Provider store={store}>
+            <CommentProvider value={{
+                value: commentValue,
+                onChange: setCommentValue,
+            }}>
+                <tokenContext.Provider value={token}>
+                    <UserContextProvider>
+                        <Layout>
+                            <Header/>
+                            <Content>
+                                <PostsContextProvider>
+                                    <CardList/>
+                                </PostsContextProvider>
+                            </Content>
+                        </Layout>
+                    </UserContextProvider>
+                </tokenContext.Provider>
+            </CommentProvider>
+        </Provider>
     )
 }
 

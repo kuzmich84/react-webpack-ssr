@@ -5,6 +5,8 @@ import {UserMeta} from "../CardList/Card/UserMeta";
 import {Title} from "../CardList/Card/TextContent/Title";
 import ReactDOM from "react-dom";
 import {CommentPostForm} from "./CommentPostForm";
+import {CommentPostFormContainer} from "../CommentPostFormContainer";
+
 
 interface IPostProps {
     score: number;
@@ -55,7 +57,7 @@ export function Post({score, author, created, title, onClose}: IPostProps) {
                         in incidunt molestiae molestias nam nostrum officiis reiciendis repudiandae sequi temporibus
                         totam, voluptatibus. Nesciunt, sit!</p>
                 </div>
-                <CommentPostForm />
+                <CommentPostFormContainer/>
             </div>
         </div>
     ), node);
