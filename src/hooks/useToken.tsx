@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch} from "react-redux";
+import {setToken} from "../store";
 
 export default function useToken() {
-    const [token, setToken] = useState('');
+    const token = ''
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (window.__token__) {
-            setToken(window.__token__)
+            dispatch(setToken(window.__token__))
         }
-    }, []);
+    }, [dispatch]);
 
     return [token];
 };
