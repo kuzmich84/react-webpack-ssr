@@ -9,12 +9,7 @@ interface ILayoutProps {
 }
 
 export function Layout({children}: ILayoutProps) {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if (window.__token__) {
-            dispatch(setToken(window.__token__))
-        }
-    }, [dispatch]);
+    useToken();
     return (
         <div className={styles.layout}>
             {children}

@@ -10,7 +10,7 @@ import {PostsContextProvider} from "./shared/context/postsContext";
 import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {rootReducer} from "./store/store";
+import {rootReducer, setToken} from "./store/store";
 import thunk from "redux-thunk";
 
 
@@ -19,10 +19,6 @@ const store = createStore(rootReducer, composeWithDevTools(
 ));
 
 function AppComponent() {
-    useEffect(() => {
-        // @ts-ignore
-
-    }, []);
     return (
         <Provider store={store}>
             <UserContextProvider>
