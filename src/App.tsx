@@ -7,28 +7,30 @@ import {Content} from "./shared/Content";
 import {CardList} from "./shared/CardList";
 import {UserContextProvider} from "./shared/context/userContext";
 import {PostsContextProvider} from "./shared/context/postsContext";
-import { createStore} from "redux";
+import {applyMiddleware, createStore, Middleware} from "redux";
 import {Provider} from "react-redux";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {rootReducer} from "./store";
+import thunk from "redux-thunk";
 
 
-
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(thunk)
+));
 
 function AppComponent() {
     return (
         <Provider store={store}>
-                    <UserContextProvider>
-                        <Layout>
-                            <Header/>
-                            <Content>
-                                <PostsContextProvider>
-                                    <CardList/>
-                                </PostsContextProvider>
-                            </Content>
-                        </Layout>
-                    </UserContextProvider>
+            <UserContextProvider>
+                <Layout>
+                    <Header/>
+                    <Content>
+                        <PostsContextProvider>
+                            <CardList/>
+                        </PostsContextProvider>
+                    </Content>
+                </Layout>
+            </UserContextProvider>
         </Provider>
     )
 }
