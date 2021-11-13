@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {tokenContext} from "../shared/context/tokenContext";
 import {useSelector} from "react-redux";
-import {RootState} from "../store";
+import {RootState} from "../store/store";
 
 interface IUserData {
     [index: number]: {};

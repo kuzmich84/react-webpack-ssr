@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styles from './layout.scss';
 import {useDispatch} from "react-redux";
 import useToken from "../../hooks/useToken";
-import {setToken} from "../../store";
+import {setToken} from "../../store/store";
 
 interface ILayoutProps {
     children?: React.ReactNode
