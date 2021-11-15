@@ -8,7 +8,7 @@ export default function useToken() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         console.log(token)
-        if (token !== "undefined" || null) {
+        if (token !== "undefined" && token !== null) {
             dispatch(setToken(token))
         } else if (window.__token__) {
             dispatch(setToken(window.__token__));
