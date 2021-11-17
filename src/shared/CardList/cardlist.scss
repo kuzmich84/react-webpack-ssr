@@ -2,6 +2,24 @@
   @include reset-ul();
 }
 
+.btnLoad {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: $greyD9;
+  color: $grey66;
+  padding: 10px 15px;
+}
+
+.btnLoad:hover {
+  opacity: 0.5;
+  color: $white;
+}
+
+.btnLoad:active {
+  color: $grey66;
+}
+
 @media (min-width: $tablet-width) {
   .list {
     padding: 40px 0;

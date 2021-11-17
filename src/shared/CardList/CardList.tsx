@@ -10,6 +10,7 @@ export function CardList() {
     const [loading, setLoading] = useState(false);
     const [errorLoading, setErrorLoading] = useState('');
     const [nextAfter, setNextAfter] = useState('');
+    const [countLoading, setCountLoading] = useState(0);
     const token: string = useSelector<RootState, string>(state => state.token);
 
     const bottomOfList = useRef<HTMLDivElement>(null);
@@ -34,6 +35,7 @@ export function CardList() {
 
                 setNextAfter(after);
                 setPosts(prevChildren => prevChildren.concat(...children));
+                setCountLoading(prevState => prevState + 1);
 
             } catch (e) {
                 setErrorLoading(String(e))
@@ -42,8 +44,13 @@ export function CardList() {
         }
 
         const observer = new IntersectionObserver((entries) => {
-            if(entries[0].isIntersecting) {
-                load();
+            if (entries[0].isIntersecting) {
+                if (countLoading === 3) {
+                    console.log(`countLoading`, countLoading)
+                } else {
+                    load();
+                }
+
             }
 
         }, {rootMargin: '100px'});
@@ -54,7 +61,7 @@ export function CardList() {
             if (bottomOfList.current) observer.unobserve(bottomOfList.current);
         }
 
-    }, [bottomOfList.current, token, nextAfter]);
+    }, [bottomOfList.current, token, nextAfter, countLoading]);
 
     return (
         <section className={styles.cards}>
@@ -72,6 +79,12 @@ export function CardList() {
                 {loading && <div style={{textAlign: 'center'}}>
                     Загрузка...
                 </div>}
+
+                {countLoading >= 3
+                    ? <button className={['btn', styles.btnLoad].join(' ')} type="button" onClick={() => setCountLoading(0)}>Загрузить еще</button>
+                    : ''
+                }
+
                 {errorLoading && (
                     <div role="alert" style={{textAlign: 'center'}}>
                         {errorLoading}
