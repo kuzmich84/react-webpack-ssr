@@ -9,27 +9,31 @@ export function CardList() {
     const [posts, setPosts] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [errorLoading, setErrorLoading] = useState('');
+    const [nextAfter, setNextAfter] = useState('');
     const token: string = useSelector<RootState, string>(state => state.token);
 
     const bottomOfList = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!token) return;
-        setErrorLoading('');
 
         async function load() {
             setLoading(true);
+            setErrorLoading('');
             try {
                 // @ts-ignore
-                const {data: {data: {children}}} = await axios.get('https://oauth.reddit.com/best',
+                const {data: {data: {after, children}}} = await axios.get('https://oauth.reddit.com/best',
                     {
                         headers: {Authorization: `bearer ${token}`},
                         params: {
-                            limit: 10
+                            limit: 10,
+                            after: nextAfter
                         }
                     }
                 );
-                setPosts(children)
+
+                setNextAfter(after);
+                setPosts(prevChildren => prevChildren.concat(...children));
 
             } catch (e) {
                 setErrorLoading(String(e))
@@ -37,16 +41,21 @@ export function CardList() {
             setLoading(false);
         }
 
-        load();
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                load();
+            }
 
-    }, [token])
+        }, {rootMargin: '100px'});
 
-    useEffect(() => {
-    const observer = new IntersectionObserver(()=>{
-        console.log('load more');
-    });
+        if (bottomOfList.current) observer.observe(bottomOfList.current);
 
-}, [])
+        return () => {
+            if (bottomOfList.current) observer.unobserve(bottomOfList.current);
+        }
+
+    }, [bottomOfList.current, token, nextAfter]);
+
     return (
         <section className={styles.cards}>
             <ul className={styles.list}>
@@ -57,6 +66,8 @@ export function CardList() {
                     </div>
                 )}
                 {posts.map((post) => <Card key={post.data.id} postData={post.data}/>)}
+
+                <div ref={bottomOfList}/>
 
                 {loading && <div style={{textAlign: 'center'}}>
                     Загрузка...

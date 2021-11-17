@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React  from "react";
 import {hot} from "react-hot-loader/root";
 import './main.global.scss';
 import {Layout} from "./shared/Layout";
@@ -6,11 +6,10 @@ import {Header} from "./shared/Header";
 import {Content} from "./shared/Content";
 import {CardList} from "./shared/CardList";
 import {UserContextProvider} from "./shared/context/userContext";
-import {PostsContextProvider} from "./shared/context/postsContext";
 import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {rootReducer, setToken} from "./store/store";
+import {rootReducer} from "./store/store";
 import thunk from "redux-thunk";
 
 
@@ -25,9 +24,7 @@ function AppComponent() {
                 <Layout>
                     <Header/>
                     <Content>
-
-                            <CardList/>
-
+                        <CardList/>
                     </Content>
                 </Layout>
             </UserContextProvider>
