@@ -25,9 +25,9 @@ function AppComponent() {
                 <Layout>
                     <Header/>
                     <Content>
-                        <PostsContextProvider>
+
                             <CardList/>
-                        </PostsContextProvider>
+
                     </Content>
                 </Layout>
             </UserContextProvider>

@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './card.scss';
-import {ControlBlock} from "./ControlBlock";
 import {HeaderCard} from "./HeaderCard";
 import {FooterCard} from "./FooterCard";
-import {Comments} from "../../Comments";
+
 
 interface ICard {
     postData: {
@@ -18,7 +17,6 @@ interface ICard {
 
 export function Card({postData}: ICard) {
     const {author, url, title, created, num_comments, score} = postData;
-    console.log(postData)
     return (
         <li className={styles.card}>
             <div className={styles.content}>
